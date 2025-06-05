@@ -317,36 +317,40 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
   }
 
   return (
-    <div className="space-y-0">
+    <div className="space-y-0 outline rounded-t-lg">
       {stories.map((story, index) => (
         <div key={story.id} className={`bg-white border-b border-gray-200 hover:bg-gray-50 transition-colors relative h-32 ${
           index === 0 ? 'rounded-t-lg' : ''
         }`}>
           <div className="flex h-full">
             <div 
-              className="flex-1 p-4 pr-0 cursor-pointer"
+              className="flex-1 p-4 pr-4 cursor-pointer"
               onClick={() => handleStoryClick(story)}
             >
               <h3 
-                className="font-bold text-gray-900 text-base leading-snug mb-2 overflow-hidden"
+                className="font-bold text-gray-900 text-base leading-snug mb-2 overflow-hidden break-words"
                 style={{
                   display: '-webkit-box',
                   WebkitLineClamp: 1,
                   WebkitBoxOrient: 'vertical',
-                  textOverflow: 'ellipsis'
+                  textOverflow: 'ellipsis',
+                  wordBreak: 'break-all',
+                  overflowWrap: 'break-word'
                 }}
               >
                 {story.title || 'Untitled Story'}
               </h3>
               <p 
-                className="text-gray-700 text-sm leading-normal font-medium mb-3 overflow-hidden"
+                className="text-gray-700 text-sm leading-normal font-medium mb-3 overflow-hidden break-words"
                 style={{
                   display: '-webkit-box',
                   WebkitLineClamp: 2,
                   WebkitBoxOrient: 'vertical',
                   textOverflow: 'ellipsis',
                   height: '2.5rem',
-                  minHeight: '2.5rem'
+                  minHeight: '2.5rem',
+                  wordBreak: 'break-all',
+                  overflowWrap: 'break-word'
                 }}
               >
                 {story.content}
