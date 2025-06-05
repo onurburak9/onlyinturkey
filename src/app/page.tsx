@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import Modal from '../components/Modal'
 import StoryForm from '../components/StoryForm'
 import StoriesList from '../components/StoriesList'
@@ -128,9 +129,11 @@ export default function Home() {
           <div className="flex items-center space-x-3">
             {/* Turkish Flag */}
             <div className="w-7 h-7 rounded-full overflow-hidden border border-gray-200">
-              <img 
+              <Image 
                 src="https://media.istockphoto.com/id/1144879597/vector/turkey-square-flag-icon.jpg?s=612x612&w=0&k=20&c=6imyXQzTbSmXDSfklvbLY6TcUhFvatYlp73uWzX8I88="
                 alt="Turkish Flag"
+                width={28}
+                height={28}
                 className="w-full h-full object-cover"
               />
             </div>

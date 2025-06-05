@@ -68,7 +68,7 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
     setVotedStories(getVotedStories())
   }, [])
 
-  const fetchStories = async (currentOffset = 0, append = false) => {
+  const fetchStories = useCallback(async (currentOffset = 0, append = false) => {
     try {
       if (currentOffset === 0) {
         setLoading(true)
@@ -102,17 +102,18 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
       setLoading(false)
       setLoadingMore(false)
     }
-  }
+  }, [sortBy])
 
   // Load more stories when intersection observer triggers
   const loadMore = useCallback(() => {
     if (!loadingMore && hasMore && !loading) {
       fetchStories(offset, true)
     }
-  }, [loadingMore, hasMore, loading, offset, sortBy])
+  }, [loadingMore, hasMore, loading, offset, fetchStories])
 
   // Intersection Observer setup
   useEffect(() => {
+    const currentRef = loadMoreRef.current
     const observer = new IntersectionObserver(
       (entries) => {
         const target = entries[0]
@@ -123,13 +124,13 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
       { threshold: 0.1 }
     )
 
-    if (loadMoreRef.current) {
-      observer.observe(loadMoreRef.current)
+    if (currentRef) {
+      observer.observe(currentRef)
     }
 
     return () => {
-      if (loadMoreRef.current) {
-        observer.unobserve(loadMoreRef.current)
+      if (currentRef) {
+        observer.unobserve(currentRef)
       }
     }
   }, [loadMore])
@@ -139,7 +140,7 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
     setOffset(0)
     setHasMore(true)
     fetchStories(0, false)
-  }, [sortBy])
+  }, [sortBy, fetchStories])
 
   // Refresh functionality
   useEffect(() => {
@@ -148,7 +149,7 @@ export default function StoriesList({ sortBy = 'new', onRefresh = false }: Stori
       setHasMore(true)
       fetchStories(0, false)
     }
-  }, [onRefresh])
+  }, [onRefresh, fetchStories])
 
   const handleVote = async (storyId: number) => {
     if (votingStoryId) return // Prevent double-clicking
