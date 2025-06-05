@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Modal from '../components/Modal'
-import StoryForm from '../components/StoryForm'
-import StoriesList from '../components/StoriesList'
+import Modal from '@/components/Modal'
+import StoryForm from '@/components/StoryForm'
+import StoriesList from '@/components/StoriesList'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('new')

@@ -1,10 +1,25 @@
-import { NextResponse } from 'next/server'
-import { supabase } from '../../../lib/supabase'
+import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
-export async function POST(request) {
+interface StorySubmission {
+  title?: string
+  content: string
+  location?: string
+}
+
+interface StoryData {
+  title: string | null
+  content: string
+  location: string | null
+  created_by: string
+  votes: number
+  is_approved: boolean
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     // Parse the request body
-    const body = await request.json()
+    const body: StorySubmission = await request.json()
     const { title, content, location } = body
 
     // Validation
@@ -59,7 +74,7 @@ export async function POST(request) {
       .replace(/<iframe\b[^<]*(?:(?!<\/iframe>)<[^<]*)*<\/iframe>/gi, '')
 
     // Prepare data for insertion
-    const storyData = {
+    const storyData: StoryData = {
       title: sanitizedTitle || null,
       content: sanitizedContent,
       location: trimmedLocation || null,
@@ -101,7 +116,7 @@ export async function POST(request) {
 }
 
 // Handle other HTTP methods
-export async function GET() {
+export async function GET(): Promise<NextResponse> {
   return NextResponse.json(
     { error: 'Method not allowed' },
     { status: 405 }

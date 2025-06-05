@@ -1,8 +1,8 @@
 import { createClient } from '@supabase/supabase-js'
 
 // Get environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseUrl: string | undefined = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey: string | undefined = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 // Validate environment variables
 if (!supabaseUrl || !supabaseAnonKey) {
@@ -17,4 +17,4 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 })
 
 // Export default for easier imports
-export default supabase
+export default supabase 

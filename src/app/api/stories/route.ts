@@ -1,7 +1,22 @@
-import { NextResponse } from 'next/server'
-import { supabase } from '../../../lib/supabase'
+import { NextRequest, NextResponse } from 'next/server'
+import { supabase } from '@/lib/supabase'
 
-export async function GET(request) {
+interface Story {
+  id: number
+  title: string | null
+  content: string
+  location: string | null
+  votes: number
+  created_at: string
+  is_approved: boolean
+  created_by: string
+}
+
+interface StoryWithTime extends Story {
+  timeAgo: string
+}
+
+export async function GET(request: NextRequest): Promise<NextResponse> {
   try {
     const { searchParams } = new URL(request.url)
     const sortBy = searchParams.get('sort') || 'new' // 'new', 'top', or 'trending'
@@ -42,7 +57,7 @@ export async function GET(request) {
     }
 
     // Transform data to include relative time
-    const storiesWithTime = data.map(story => ({
+    const storiesWithTime: StoryWithTime[] = (data as Story[]).map(story => ({
       ...story,
       timeAgo: getTimeAgo(story.created_at)
     }))
@@ -65,10 +80,10 @@ export async function GET(request) {
 }
 
 // Helper function to calculate time ago
-function getTimeAgo(dateString) {
+function getTimeAgo(dateString: string): string {
   const now = new Date()
   const storyDate = new Date(dateString)
-  const diffInMs = now - storyDate
+  const diffInMs = now.getTime() - storyDate.getTime()
   const diffInMinutes = Math.floor(diffInMs / (1000 * 60))
   const diffInHours = Math.floor(diffInMinutes / 60)
   const diffInDays = Math.floor(diffInHours / 24)
