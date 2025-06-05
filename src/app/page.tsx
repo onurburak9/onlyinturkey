@@ -159,39 +159,33 @@ export default function Home() {
                 <p>We love Turkey ❤️</p>
                 
                 <p>
-                  But we also experience many crazy and frustrating things we&apos;ve never experienced anywhere else in 
-                  the world. Experiences that just make you pull your hair out, or laugh in how completely absurd and 
-                  Kafka-esque basic service interactions can be in Turkey, with businesses, government services, or 
-                  even just restaurants.
+                  From the çay glasses that appear everywhere like magic, to the warmth of people who&apos;ll invite you to dinner after knowing you for five minutes, Turkey has an undeniable charm that keeps us here.
                 </p>
                 
                 <p>
-                  When we complain, the usual response from Turkish people online is &quot;if you don&apos;t like it, leave&quot;. But that 
-                  doesn&apos;t seem to be a very problem-solving approach.
+                  But anyone who lives here knows the other side — the bureaucratic maze where you need 7 different documents to get 1 document, the government services that seem designed to test your sanity, and those business interactions that leave you wondering if customer service is a foreign concept.
                 </p>
                 
                 <p>
-                  This board is a way to collect our stories to show there&apos;s a distinct pattern of service interactions in 
-                  this country, which is unlike the rest of the world.
+                  There are experiences so distinctly Turkish in their inefficiency that explaining them abroad sounds like fiction. The kind of service interactions that make you question whether basic functionality is optional.
                 </p>
                 
                 <p>
-                  Hopefully by collecting these stories, Turkey can use them as feedback and improve for both 
-                  foreigners, and Turkish people.
+                  When people point out these issues, the usual response is &quot;if you don&apos;t like it, leave.&quot; (Ya Sev Ya Terket 😡) But that&apos;s not problem-solving — that&apos;s problem-avoiding.
                 </p>
                 
-                <p className="italic text-xs text-gray-600">
-                  &quot;A dead thing can go with the stream, but only a living thing can go against it.&quot;
+                <p>
+                  This space is for documenting these patterns. The government office visits that require multiple trips for mysteriously changing requirements. The utility companies with their own interpretation of logic. The businesses where &quot;customer is always right&quot; translates to &quot;customer is always confused.&quot;
+                </p>
+                
+                <p>
+                  By collecting these stories, maybe we can show there&apos;s a distinct pattern of service dysfunction that affects everyone — locals and foreigners alike. Because acknowledging problems is the first step toward fixing them.
                 </p>
                 
                 <p className="font-semibold text-gray-900 text-xs">
-                  POSTS ARE FULLY ANONYMOUS AND YOUR EMAIL AND USERNAME ARE NOT SHARED EVER
+                  POSTS ARE FULLY ANONYMOUS!!
                 </p>
-                
-                <p className="font-medium text-xs text-gray-700">
-                  Update: We will submit the top stories and problems to Turkish members of parliament soon and 
-                  see if they will address these issues.
-                </p>
+              
               </div>
             </div>
 
